@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="is">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fylgja 1 – Loops</title>
+    <style>
+      body {
+        font-family: system-ui, Arial, sans-serif;
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 16px;
+        background: #f6f4ee;
+        color: #1c2230;
+        line-height: 1.5;
+      }
+      section {
+        background: #fff;
+        border: 1px solid #e2ded3;
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 24px;
+      }
+      h2 {
+        margin-top: 0;
+      }
+      button {
+        padding: 8px 14px;
+        border: none;
+        border-radius: 6px;
+        background: #2a5db8;
+        color: white;
+        cursor: pointer;
+        margin: 4px 4px 4px 0;
+      }
+      button:hover {
+        background: #1d4690;
+      }
+      input {
+        padding: 7px 10px;
+        border: 1px solid #c9c4b8;
+        border-radius: 6px;
+      }
+      .output {
+        background: #f4f2ec;
+        padding: 10px 12px;
+        border-radius: 6px;
+        min-height: 24px;
+      }
+      code,
+      pre {
+        background: #1e2433;
+        color: #e6e9ef;
+        border-radius: 6px;
+      }
+      code {
+        padding: 1px 5px;
+      }
+      pre {
+        padding: 12px 16px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fylgja 1: Loops</h1>
+    <p>
+      Við skrifum kóðann saman. Hafið console opna (F12 eða Cmd + Option + I).
+    </p>
+    <p>
+      Athugið: öll <code>&lt;script&gt;</code> á síðunni deila sama global
+      scope. Þess vegna fá breyturnar mismunandi nöfn (texti1, texti2 ...). Við
+      skoðum af hverju í scope-hlutanum.
+    </p>
+
+    <!-- Æfing 1 -->
+    <section>
+      <h2>Æfing 1: Telja frá 1 upp í 10</h2>
+      <p>Notaðu for-loopu til að skrifa tölurnar 1 til 10.</p>
+      <p class="output" id="aefing1"></p>
+
+      <script>
+        // TODO:
+        // 1. Búðu til tóma breytu: let texti1 = "";
+        // 2. Skrifaðu for-loopu sem byrjar í 1 og keyrir á meðan i <= 10
+        // 3. Bættu i og bili við texti1 í hverri umferð
+        // 4. Settu texti1 inn í aefing1 með innerHTML
+      </script>
+    </section>
+
+    <!-- Æfing 2 -->
+    <section>
+      <h2>Æfing 2: Niðurtalning</h2>
+      <p>Teldu niður frá 10 til 1 og skrifaðu svo "Af stað! 🚀".</p>
+      <p class="output" id="aefing2"></p>
+
+      <script>
+        // TODO:
+        // - Byrjaðu í 10, haltu áfram á meðan i >= 1 og notaðu i-- til að minnka
+        // - Eftir loopuna: bættu "Af stað! 🚀" aftast
+      </script>
+    </section>
+
+    <!-- Æfing 3 -->
+    <section>
+      <h2>Æfing 3: Sléttar tölur</h2>
+      <p>Skrifaðu allar sléttar tölur frá 0 upp í 20.</p>
+      <p class="output" id="aefing3"></p>
+
+      <script>
+        // TODO:
+        // - Í stað i++ getum við notað i += 2 til að hoppa um tvo
+      </script>
+    </section>
+
+    <!-- Æfing 4 -->
+    <section>
+      <h2>Æfing 4: Margföldunartafla 7</h2>
+      <p>Skrifaðu 7 x 1 = 7 upp í 7 x 10 = 70, hverja á sinni línu.</p>
+      <p class="output" id="aefing4"></p>
+
+      <script>
+        // TODO:
+        // - Loopa frá 1 upp í 10
+        // - Í hverri umferð: 7 + " x " + i + " = " + 7 * i
+        // - Notaðu "<br>" til að fá nýja línu
+      </script>
+    </section>
+
+    <!-- Æfing 5 -->
+    <section>
+      <h2>Æfing 5: Summa talnanna 1–100</h2>
+      <p>Leggðu saman allar tölur frá 1 upp í 100. (Svarið á að vera 5050.)</p>
+      <p class="output" id="aefing5"></p>
+
+      <script>
+        // TODO:
+        // 1. Búðu til let summa = 0; FYRIR OFAN loopuna
+        // 2. Inni í loopunni: summa = summa + i;
+        // 3. EFTIR loopuna: birtu summuna
+      </script>
+    </section>
+
+    <!-- Æfing 6 -->
+    <section>
+      <h2>Æfing 6: Listi úr fylki (for...of)</h2>
+      <p>Búðu til &lt;li&gt; fyrir hvert dýr í fylkinu.</p>
+      <ul id="aefing6"></ul>
+
+      <script>
+        const dyr = ["köttur", "hundur", "hestur", "kind", "lundi"];
+
+        // TODO:
+        // - Notaðu for (const eitt of dyr) { ... }
+        // - Bættu "<li>" + eitt + "</li>" við breytuna listi
+        // - Settu listi inn í aefing6
+      </script>
+    </section>
+
+    <!-- Æfing 7 -->
+    <section>
+      <h2>Æfing 7: Tvöföldun með while</h2>
+      <p>
+        Byrjaðu á 1 og tvöfaldaðu töluna á meðan hún er minni en 1000. Skrifaðu
+        hverja tölu.
+      </p>
+      <p class="output" id="aefing7"></p>
+
+      <script>
+        // TODO:
+        // 1. let tala = 1;
+        // 2. while (tala < 1000) { ... }
+        // 3. Inni í loopunni: bættu tölunni við textann og tvöfaldaðu hana
+        //    MUNA: ef tala breytist aldrei, þá hættir loopan aldrei!
+      </script>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="is">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fylgja 2 – Functions</title>
+    <style>
+      body {
+        font-family: system-ui, Arial, sans-serif;
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 16px;
+        background: #f6f4ee;
+        color: #1c2230;
+        line-height: 1.5;
+      }
+      section {
+        background: #fff;
+        border: 1px solid #e2ded3;
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 24px;
+      }
+      h2 {
+        margin-top: 0;
+      }
+      button {
+        padding: 8px 14px;
+        border: none;
+        border-radius: 6px;
+        background: #2a5db8;
+        color: white;
+        cursor: pointer;
+        margin: 4px 4px 4px 0;
+      }
+      button:hover {
+        background: #1d4690;
+      }
+      input {
+        padding: 7px 10px;
+        border: 1px solid #c9c4b8;
+        border-radius: 6px;
+      }
+      .output {
+        background: #f4f2ec;
+        padding: 10px 12px;
+        border-radius: 6px;
+        min-height: 24px;
+      }
+      code,
+      pre {
+        background: #1e2433;
+        color: #e6e9ef;
+        border-radius: 6px;
+      }
+      code {
+        padding: 1px 5px;
+      }
+      pre {
+        padding: 12px 16px;
+        overflow-x: auto;
+      }
+    </style>
+    <style>
+      #kassar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .kassi {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        background: #f08a3c;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fylgja 2: Functions</h1>
+    <p>Við skrifum kóðann saman. Munið: skilgreina function ≠ kalla á hana.</p>
+
+    <!-- Æfing 1 -->
+    <section>
+      <h2>Æfing 1: Halló heimur</h2>
+      <p>Smelltu á takkann til að kalla á function.</p>
+      <button onclick="sayHello()">Smelltu hér</button>
+      <p class="output" id="aefing1"></p>
+
+      <script>
+        // TODO: Skrifaðu function sem heitir sayHello()
+        // sem setur "Halló heimur!" í aefing1
+      </script>
+    </section>
+
+    <!-- Æfing 2 -->
+    <section>
+      <h2>Æfing 2: Kveðja með nafni</h2>
+      <input type="text" id="nameInput" placeholder="Nafn" />
+      <button onclick="greet()">Kveðja</button>
+      <p class="output" id="aefing2"></p>
+
+      <script>
+        // TODO: Skrifaðu function sem heitir greet()
+        // 1. Sæktu nafnið: document.getElementById("nameInput").value
+        // 2. Skrifaðu "Halló [nafn]!" í aefing2
+      </script>
+    </section>
+
+    <!-- Æfing 3 -->
+    <section>
+      <h2>Æfing 3: Sama function, mismunandi nöfn (parameter)</h2>
+      <p>Allir takkarnir kalla á SÖMU function, en senda inn mismunandi nafn.</p>
+      <button onclick="kvedjaPersonu('Anna')">Anna</button>
+      <button onclick="kvedjaPersonu('Jón')">Jón</button>
+      <button onclick="kvedjaPersonu('Sigga')">Sigga</button>
+      <p class="output" id="aefing3"></p>
+
+      <script>
+        // TODO: Skrifaðu function kvedjaPersonu(nafn)
+        // - nafn er parameter: það fær gildið sem takkinn sendir inn
+        // - Skrifaðu "Góðan daginn, [nafn]!" í aefing3
+      </script>
+    </section>
+
+    <!-- Æfing 4 -->
+    <section>
+      <h2>Æfing 4: Samlagning með return</h2>
+      <input type="number" id="tala1" placeholder="Tala 1" />
+      <input type="number" id="tala2" placeholder="Tala 2" />
+      <button onclick="reiknaSummu()">Reikna</button>
+      <p class="output" id="aefing4"></p>
+
+      <script>
+        // TODO 1: Skrifaðu function plus(a, b) sem SKILAR (return) a + b
+
+        // TODO 2: Skrifaðu function reiknaSummu() sem:
+        // - sækir báðar tölurnar og breytir þeim í tölur með Number()
+        // - kallar á plus() og geymir svarið í breytu
+        // - birtir svarið í aefing4
+      </script>
+    </section>
+
+    <!-- Æfing 5 -->
+    <section>
+      <h2>Æfing 5: Arrow function – flatarmál</h2>
+      <input type="number" id="lengd" placeholder="Lengd" />
+      <input type="number" id="breidd" placeholder="Breidd" />
+      <button onclick="synaFlatarmal()">Reikna flatarmál</button>
+      <p class="output" id="aefing5"></p>
+
+      <script>
+        // TODO 1: Skrifaðu arrow function:
+        // const flatarmal = (lengd, breidd) => ...
+
+        // TODO 2: Skrifaðu function synaFlatarmal() sem sækir lengd og breidd,
+        // kallar á flatarmal() og birtir svarið í aefing5
+      </script>
+    </section>
+
+    <!-- Æfing 6 -->
+    <section>
+      <h2>Æfing 6: Margföldunartafla að eigin vali (loop + function)</h2>
+      <input type="number" id="taflaTala" placeholder="t.d. 7" />
+      <button onclick="synaToflu()">Sýna töflu</button>
+      <p class="output" id="aefing6"></p>
+
+      <script>
+        // TODO 1: Skrifaðu function tafla(n) sem notar for-loopu
+        // og SKILAR texta með n x 1 = ... upp í n x 10 = ...
+
+        // TODO 2: Skrifaðu function synaToflu() sem sækir töluna úr input
+        // og setur tafla(talan) inn í aefing6
+      </script>
+    </section>
+
+    <!-- Æfing 7 -->
+    <section>
+      <h2>Æfing 7: Teikna N kassa</h2>
+      <input type="number" id="fjoldiKassa" placeholder="Fjöldi" />
+      <button onclick="teiknaKassa()">Teikna</button>
+      <div id="kassar"></div>
+
+      <script>
+        // TODO: Skrifaðu function teiknaKassa() sem:
+        // 1. Sækir fjöldann úr input
+        // 2. Notar for-loopu til að búa til texta með
+        //    '<div class="kassi">' + i + '</div>' fyrir hvern kassa
+        // 3. Setur textann inn í kassar
+      </script>
+    </section>
+  </body>
+</html>
