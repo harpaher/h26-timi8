@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="is">
   <head>
     <meta charset="UTF-8" />
@@ -84,6 +84,11 @@
         // 2. Skrifaðu for-loopu sem byrjar í 1 og keyrir á meðan i <= 10
         // 3. Bættu i og bili við texti1 í hverri umferð
         // 4. Settu texti1 inn í aefing1 með innerHTML
+        let texti1 = "";
+        for (let i = 1; i <= 10; i++) {
+          texti1 += i + " ";
+        }
+        document.getElementById("aefing1").innerHTML = texti1;
       </script>
     </section>
 
@@ -97,6 +102,12 @@
         // TODO:
         // - Byrjaðu í 10, haltu áfram á meðan i >= 1 og notaðu i-- til að minnka
         // - Eftir loopuna: bættu "Af stað! 🚀" aftast
+        let texti2 = "";
+        for (let i = 10; i >= 1; i--) {
+          texti2 += i + " ";
+        }
+        texti2 += "Af stað! 🚀";
+        document.getElementById("aefing2").innerHTML = texti2;
       </script>
     </section>
 
@@ -109,6 +120,12 @@
       <script>
         // TODO:
         // - Í stað i++ getum við notað i += 2 til að hoppa um tvo
+        let texti3 = "";
+
+        for (let i = 0; i <= 20; i += 2) {
+          texti3 += i + " ";
+        }
+        document.getElementById("aefing3").innerHTML = texti3;
       </script>
     </section>
 
@@ -123,6 +140,12 @@
         // - Loopa frá 1 upp í 10
         // - Í hverri umferð: 7 + " x " + i + " = " + 7 * i
         // - Notaðu "<br>" til að fá nýja línu
+        let texti4 = "";
+
+        for (let i = 1; i <= 10; i++) {
+          texti4 += 7 + " x " + i + " = " + 7 * i + "<br>";
+        }
+        document.getElementById("aefing4").innerHTML = texti4;
       </script>
     </section>
 
@@ -137,6 +160,13 @@
         // 1. Búðu til let summa = 0; FYRIR OFAN loopuna
         // 2. Inni í loopunni: summa = summa + i;
         // 3. EFTIR loopuna: birtu summuna
+        let texti5 = 0;
+
+        for (let i = 1; i <= 100; i++) {
+          texti5 = texti5 + i;
+        }
+        document.getElementById("aefing5").innerHTML = texti5;
+        texti;
       </script>
     </section>
 
@@ -153,6 +183,12 @@
         // - Notaðu for (const eitt of dyr) { ... }
         // - Bættu "<li>" + eitt + "</li>" við breytuna listi
         // - Settu listi inn í aefing6
+        let listi = "";
+
+        for (const eittDyr of dyr) {
+          listi += "<li>" + eittDyr + "</li>";
+        }
+        document.getElementById("aefing6").innerHTML = listi;
       </script>
     </section>
 
@@ -171,6 +207,13 @@
         // 2. while (tala < 1000) { ... }
         // 3. Inni í loopunni: bættu tölunni við textann og tvöfaldaðu hana
         //    MUNA: ef tala breytist aldrei, þá hættir loopan aldrei!
+        let tala = 1;
+        let texti7 = "";
+        while (tala < 1000) {
+          texti7 += tala + " ";
+          tala = tala * 2;
+        }
+        document.getElementById("aefing7").innerHTML = texti7;
       </script>
     </section>
   </body>
