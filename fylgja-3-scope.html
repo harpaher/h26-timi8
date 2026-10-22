@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="is">
   <head>
     <meta charset="UTF-8" />
@@ -73,9 +73,7 @@
   </head>
   <body>
     <h1>Fylgja 3: Scope</h1>
-    <p>
-      Reglan: <b>innan frá sér maður út, utan frá sér maður ekki inn.</b>
-    </p>
+    <p>Reglan: <b>innan frá sér maður út, utan frá sér maður ekki inn.</b></p>
 
     <!-- Æfing 1 -->
     <section>
@@ -91,15 +89,17 @@
         // TODO:
         // 1. Búðu til global breytu: let skoli = "NTV";
         // 2. Skrifaðu function synaSkola() sem skrifar "Ég er í [skoli]" í aefing1
+        let skoli = "NTV";
+        function synaSkola() {
+          document.getElementById("aefing1").innerHTML = "Ég er í " + skoli;
+        }
       </script>
     </section>
 
     <!-- Æfing 2 -->
     <section>
       <h2>Æfing 2: 🏠 Local breyta</h2>
-      <p>
-        Breyta sem er búin til <b>inni í</b> function sést bara þar inni.
-      </p>
+      <p>Breyta sem er búin til <b>inni í</b> function sést bara þar inni.</p>
       <button onclick="buaTilLeyndarmal()">Keyra function</button>
       <button onclick="reynaUtan()">Reyna að nota breytuna fyrir utan</button>
       <p class="output" id="aefing2"></p>
@@ -108,6 +108,11 @@
         // TODO 1: Skrifaðu function buaTilLeyndarmal() sem býr til
         // local breytu let leyndarmal = "Ég elska JavaScript"
         // og skrifar hana í aefing2
+        function buaTilLeyndarmal() {
+          let leyndarmal = "Ég elska JavaScript";
+          document.getElementById("aefing2").innerHTML =
+            "Inn í function " + leyndarmal;
+        }
 
         // Þessi function er tilbúin. Hún reynir að nota leyndarmal FYRIR UTAN.
         // try/catch grípur villuna svo við getum sýnt hana á síðunni
@@ -139,9 +144,17 @@
 
           // TODO 1: Skrifaðu for-loopu frá 0 upp í 2 sem bætir
           // "i er núna [i]<br>" við texti
+          for (let i = 0; i < 3; i++) {
+            texti += "i er núna: " + i + "<br>";
+          }
 
           // TODO 2: Reyndu að nota i HÉR, fyrir utan loopuna.
           // Notaðu try/catch eins og í æfingu 2 og bættu villunni við texti.
+          try {
+            texti += "fyrir utan loopuna: " + i;
+          } catch (error) {
+            texti += "❌ Villa: Fyrir utan loopuna: " + error.message;
+          }
 
           document.getElementById("aefing3").innerHTML = texti;
         }
@@ -155,7 +168,14 @@
         Tvær breytur geta heitið það sama ef þær eru í mismunandi scope. Hvor
         vinnur?
       </p>
-      <button onclick="breytaLit(); synaGlobalLit()">Prófa</button>
+      <button
+        onclick="
+          breytaLit();
+          synaGlobalLit();
+        "
+      >
+        Prófa
+      </button>
       <p class="output" id="aefing4"></p>
 
       <script>
@@ -165,6 +185,11 @@
         // 1. Býr til LOCAL breytu let litur = "rauður";
         // 2. Skrifar "Inni í function: [litur]<br>" í aefing4
         // Spáðu fyrst: hvaða litur birtist í línunni "Fyrir utan function"?
+        function breytaLit() {
+          let litur = "rauður";
+          document.getElementById("aefing4").innerHTML +=
+            "Inn í utan function: " + litur + "<br>";
+        }
 
         // Þessi function er tilbúin. Takkinn keyrir hana á eftir breytaLit()
         // og hún bætir global breytunni við.
@@ -188,10 +213,20 @@
       <script>
         // TODO 1: Skrifaðu function smellaLocal() sem:
         // - býr til let fjoldiLocal = 0; INNI í function
-        // - hækkar hann um einn og skrifar hann í localTeljari
+        // - hækkar hann um einn og skrifar hann í localTeljari (hér relodast eftir hvern smell og fer í 0)
+        function smellaLocal() {
+          let fjoldiLocal = 0;
+          fjoldiLocal++;
+          document.getElementById("localTeljari").innerHTML = fjoldiLocal;
+        }
 
         // TODO 2: Búðu til let fjoldiGlobal = 0; FYRIR UTAN function
-        // og skrifaðu function smellaGlobal() sem hækkar hann og birtir
+        // og skrifaðu function smellaGlobal() sem hækkar hann og birtir (hér breytist hann bara í 0 þegar við reloadum síðunni)
+        let fjoldiGlobal = 0;
+        function smellaGlobal() {
+          fjoldiGlobal++;
+          document.getElementById("globalTeljari").innerHTML = fjoldiGlobal;
+        }
       </script>
     </section>
 
@@ -200,7 +235,10 @@
       <h2>Æfing 6: 🤔 Spáðu fyrir – hvað prentast?</h2>
       <p>Skrifaðu svarið niður ÁÐUR en þú smellir á „Sýna svar“.</p>
 
-      <h3>a)</h3>
+      <h3>
+        a)20 og svo 10. Inni í f() er búin til ný local breyta x. Global x
+        breytist ekki.
+      </h3>
       <pre>
 let x = 10;
 
@@ -220,7 +258,10 @@ console.log(x);</pre
         </p>
       </details>
 
-      <h3>b)</h3>
+      <h3>
+        b)ReferenceError: y is not defined. y er local í g() og er horfin þegar
+        g() klárast.
+      </h3>
       <pre>
 function g() {
   let y = 5;
@@ -237,7 +278,10 @@ console.log(y);</pre
         </p>
       </details>
 
-      <h3>c)</h3>
+      <h3>
+        c)6 og svo ReferenceError: i is not defined. summa er fyrir utan loopuna
+        og lifir áfram, i er bara til inni í loopunni.
+      </h3>
       <pre>
 let summa = 0;
 
@@ -256,7 +300,9 @@ console.log(i);</pre
         </p>
       </details>
 
-      <h3>d)</h3>
+      <h3>
+        d)teljari er global, svo allar þrjár keyrslur breyta sömu breytunni.
+      </h3>
       <pre>
 let teljari = 0;
 

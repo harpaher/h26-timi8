@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="is">
   <head>
     <meta charset="UTF-8" />
@@ -94,6 +94,9 @@
       <script>
         // TODO: Skrifaðu function sem heitir sayHello()
         // sem setur "Halló heimur!" í aefing1
+        function sayHello() {
+          document.getElementById("aefing1").innerHTML = "Halló heimur";
+        }
       </script>
     </section>
 
@@ -108,13 +111,19 @@
         // TODO: Skrifaðu function sem heitir greet()
         // 1. Sæktu nafnið: document.getElementById("nameInput").value
         // 2. Skrifaðu "Halló [nafn]!" í aefing2
+        function greet() {
+          let name = document.getElementById("nameInput").value;
+          document.getElementById("aefing2").innerHTML = "Halló " + name + "!";
+        }
       </script>
     </section>
 
     <!-- Æfing 3 -->
     <section>
       <h2>Æfing 3: Sama function, mismunandi nöfn (parameter)</h2>
-      <p>Allir takkarnir kalla á SÖMU function, en senda inn mismunandi nafn.</p>
+      <p>
+        Allir takkarnir kalla á SÖMU function, en senda inn mismunandi nafn.
+      </p>
       <button onclick="kvedjaPersonu('Anna')">Anna</button>
       <button onclick="kvedjaPersonu('Jón')">Jón</button>
       <button onclick="kvedjaPersonu('Sigga')">Sigga</button>
@@ -124,6 +133,10 @@
         // TODO: Skrifaðu function kvedjaPersonu(nafn)
         // - nafn er parameter: það fær gildið sem takkinn sendir inn
         // - Skrifaðu "Góðan daginn, [nafn]!" í aefing3
+        function kvedjaPersonu(nafn) {
+          document.getElementById("aefing3").innerHTML =
+            "Góðan daginn, " + nafn + "!";
+        }
       </script>
     </section>
 
@@ -137,11 +150,20 @@
 
       <script>
         // TODO 1: Skrifaðu function plus(a, b) sem SKILAR (return) a + b
+        function plus(a, b) {
+          return a + b;
+        }
 
         // TODO 2: Skrifaðu function reiknaSummu() sem:
         // - sækir báðar tölurnar og breytir þeim í tölur með Number()
         // - kallar á plus() og geymir svarið í breytu
         // - birtir svarið í aefing4
+        function reiknaSummu() {
+          let a = Number(document.getElementById("tala1").value);
+          let b = Number(document.getElementById("tala2").value);
+          let svar = plus(a, b);
+          document.getElementById("aefing4").innerHTML = "Summer er: " + svar;
+        }
       </script>
     </section>
 
@@ -156,9 +178,16 @@
       <script>
         // TODO 1: Skrifaðu arrow function:
         // const flatarmal = (lengd, breidd) => ...
+        const flatarmal = (lengd, breidd) => lengd * breidd;
 
         // TODO 2: Skrifaðu function synaFlatarmal() sem sækir lengd og breidd,
         // kallar á flatarmal() og birtir svarið í aefing5
+        function synaFlatarmal() {
+          let lengd = Number(document.getElementById("lengd").value);
+          let breidd = Number(document.getElementById("breidd").value);
+          document.getElementById("aefing5").innerHTML =
+            "Flatarmálið er: " + flatarmal(lengd, breidd);
+        }
       </script>
     </section>
 
@@ -171,10 +200,21 @@
 
       <script>
         // TODO 1: Skrifaðu function tafla(n) sem notar for-loopu
-        // og SKILAR texta með n x 1 = ... upp í n x 10 = ...
+        // og SKILAR texta með n x 1 = ... upp í n x 10 = ... ATH return texti er fyrir utan {} því textinn mun ekki skrifa fyrr en lúpan er búin að keyra
+        function tafla(n) {
+          let texti = "";
+          for (let i = 1; i <= 10; i++) {
+            texti += n + " x " + i + " = " + n * i + "<br>";
+          }
+          return texti;
+        }
 
         // TODO 2: Skrifaðu function synaToflu() sem sækir töluna úr input
         // og setur tafla(talan) inn í aefing6
+        function synaToflu() {
+          let n = Number(document.getElementById("taflaTala").value);
+          document.getElementById("aefing6").innerHTML = tafla(n);
+        }
       </script>
     </section>
 
@@ -191,6 +231,14 @@
         // 2. Notar for-loopu til að búa til texta með
         //    '<div class="kassi">' + i + '</div>' fyrir hvern kassa
         // 3. Setur textann inn í kassar
+        function teiknaKassa() {
+          let fjoldi = Number(document.getElementById("fjoldiKassa").value);
+          let html = "";
+          for (let i = 1; i <= fjoldi; i++) {
+            html += '<div class="kassi">' + i + "</div>";
+          }
+          document.getElementById("kassar").innerHTML = html;
+        }
       </script>
     </section>
   </body>

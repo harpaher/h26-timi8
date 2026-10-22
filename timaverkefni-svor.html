@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="is">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tímaverkefni – Loops, Functions & Scope (lausn)</title>
+    <style>
+      body {
+        font-family: system-ui, Arial, sans-serif;
+        max-width: 760px;
+        margin: 40px auto;
+        padding: 0 16px;
+        background: #f6f4ee;
+        color: #1c2230;
+        line-height: 1.5;
+      }
+      section {
+        background: #fff;
+        border: 1px solid #e2ded3;
+        border-radius: 12px;
+        padding: 20px 24px;
+        margin-bottom: 24px;
+      }
+      h2 {
+        margin-top: 0;
+      }
+      button {
+        padding: 8px 14px;
+        border: none;
+        border-radius: 6px;
+        background: #2a5db8;
+        color: white;
+        cursor: pointer;
+        margin: 4px 4px 4px 0;
+      }
+      button:hover {
+        background: #1d4690;
+      }
+      input {
+        padding: 7px 10px;
+        border: 1px solid #c9c4b8;
+        border-radius: 6px;
+      }
+      .output {
+        background: #f4f2ec;
+        padding: 10px 12px;
+        border-radius: 6px;
+        min-height: 24px;
+      }
+      code,
+      pre {
+        background: #1e2433;
+        color: #e6e9ef;
+        border-radius: 6px;
+      }
+      code {
+        padding: 1px 5px;
+      }
+      pre {
+        padding: 12px 16px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Tímaverkefni: Loops, Functions & Scope
+      <small style="color: #b85a12">– lausn</small>
+    </h1>
+    <p>
+      Nú vinnið þið sjálf. Allt HTML er tilbúið, þið skrifið JavaScript-ið þar
+      sem stendur <b>TODO</b>. Verkefni 1–6 eru grunnurinn, 7 er aukaáskorun.
+    </p>
+    <p>
+      <b>Festist þú?</b> 1. Lestu villuna í console. 2. Bættu við
+      <code>console.log()</code> til að sjá gildin. 3. Spurðu sessunautinn. 4.
+      Réttu upp hönd.
+    </p>
+
+    <!-- Verkefni 1 -->
+    <section>
+      <h2>Verkefni 1: Telja upp í N</h2>
+      <p>
+        Notandinn slær inn tölu. Skrifaðu allar tölur frá 1 upp í þá tölu.
+        (Dæmi: 5 → 1 2 3 4 5)
+      </p>
+      <input type="number" id="talaN" placeholder="t.d. 15" />
+      <button onclick="teljaUpp()">Telja</button>
+      <p class="output" id="verkefni1"></p>
+
+      <script>
+        // TODO: Skrifaðu function teljaUpp() sem:
+        // - sækir töluna úr talaN (munið Number())
+        // - notar for-loopu til að búa til texta með tölunum 1 upp í N
+        // - setur textann í verkefni1
+        function teljaUpp() {
+          let n = Number(document.getElementById("talaN").value);
+          let texti = "";
+
+          for (let i = 1; i <= n; i++) {
+            texti += i + " ";
+          }
+
+          document.getElementById("verkefni1").innerHTML = texti;
+        }
+      </script>
+    </section>
+
+    <!-- Verkefni 2 -->
+    <section>
+      <h2>Verkefni 2: Hitastigstafla</h2>
+      <p>
+        Búðu til töflu sem breytir Celsius í Fahrenheit fyrir 0, 10, 20 ... upp
+        í 100 gráður.<br />
+        Formúla: <code>F = C * 9 / 5 + 32</code>
+      </p>
+      <button onclick="synaHitatoflu()">Sýna töflu</button>
+      <p class="output" id="verkefni2"></p>
+
+      <script>
+        // TODO 1: Skrifaðu ARROW function cIF(c) sem skilar Fahrenheit
+        // const cIF = (c) => ...
+        const cIF = (c) => (c * 9) / 5 + 32;
+
+        // TODO 2: Skrifaðu function synaHitatoflu() sem:
+        // - notar for-loopu frá 0 upp í 100 sem hoppar um 10 (i += 10)
+        // - býr til línu fyrir hverja tölu: "20°C = 68°F<br>"
+        // - kallar á cIF() til að reikna Fahrenheit
+        // - setur allt í verkefni2
+        function synaHitatoflu() {
+          let texti = "";
+
+          for (let c = 0; c <= 100; c += 10) {
+            texti += c + "°C = " + cIF(c) + "°F<br>";
+          }
+
+          document.getElementById("verkefni2").innerHTML = texti;
+        }
+      </script>
+    </section>
+
+    <!-- Verkefni 3 -->
+    <section>
+      <h2>Verkefni 3: Summa í körfunni</h2>
+      <p>Hér er fylki með verðum á vörum í körfu:</p>
+      <pre>const verd = [1290, 450, 3990, 790, 2490];</pre>
+      <button onclick="synaSummu()">Reikna samtals</button>
+      <p class="output" id="verkefni3"></p>
+
+      <script>
+        const verd = [1290, 450, 3990, 790, 2490];
+
+        // TODO 1: Skrifaðu function reiknaSummu(fylki) sem:
+        // - notar for...of til að leggja saman öll stökin í fylkinu
+        // - SKILAR (return) summunni
+        function reiknaSummu(fylki) {
+          let summa = 0;
+
+          for (const tala of fylki) {
+            summa += tala;
+          }
+
+          return summa;
+        }
+
+        // TODO 2: Skrifaðu function synaSummu() sem kallar á reiknaSummu(verd)
+        // og birtir: "Samtals: 9010 kr."
+        // Bónus: birtu líka meðalverð (summa / verd.length)
+        function synaSummu() {
+          let samtals = reiknaSummu(verd);
+          let medaltal = samtals / verd.length;
+
+          document.getElementById("verkefni3").innerHTML =
+            "Samtals: " + samtals + " kr.<br>Meðalverð: " + medaltal + " kr.";
+        }
+      </script>
+    </section>
+
+    <!-- Verkefni 4 -->
+    <section>
+      <h2>Verkefni 4: Snúa orði við</h2>
+      <p>Skrifaðu orðið aftur á bak. (Dæmi: "halló" → "óllah")</p>
+      <input type="text" id="ordInput" placeholder="Sláðu inn orð" />
+      <button onclick="synaOfugt()">Snúa við</button>
+      <p class="output" id="verkefni4"></p>
+
+      <script>
+        // TODO 1: Skrifaðu function snuaVid(ord) sem SKILAR orðinu öfugu.
+        // Vísbendingar:
+        // - ord.length er fjöldi stafa, ord[0] er fyrsti stafurinn
+        // - síðasti stafurinn er ord[ord.length - 1]
+        // - láttu loopuna byrja aftast og telja NIÐUR (i--)
+        function snuaVid(ord) {
+          let ofugt = "";
+
+          for (let i = ord.length - 1; i >= 0; i--) {
+            ofugt += ord[i];
+          }
+
+          return ofugt;
+        }
+
+        // TODO 2: Skrifaðu function synaOfugt() sem sækir orðið úr ordInput,
+        // kallar á snuaVid() og birtir svarið í verkefni4.
+        // Bónus: ef orðið er eins aftur á bak (t.d. "abba" eða "rotor"),
+        // skrifaðu líka "Þetta er samhverft orð!"
+        function synaOfugt() {
+          let ord = document.getElementById("ordInput").value;
+          let ofugt = snuaVid(ord);
+          let texti = ord + " → " + ofugt;
+
+          if (ord === ofugt) {
+            texti += "<br>Þetta er samhverft orð!";
+          }
+
+          document.getElementById("verkefni4").innerHTML = texti;
+        }
+      </script>
+    </section>
+
+    <!-- Verkefni 5 -->
+    <section>
+      <h2>Verkefni 5: Innkaupalisti</h2>
+      <p>Skrifaðu vöru og smelltu á „Bæta við“. Listinn á að stækka.</p>
+      <input type="text" id="varaInput" placeholder="t.d. mjólk" />
+      <button onclick="baetaVid()">Bæta við</button>
+      <ul id="innkaupalisti"></ul>
+      <p id="fjoldiVara">Fjöldi vara: 0</p>
+
+      <script>
+        // Fylkið er búið til hér, FYRIR UTAN allar functions.
+        const innkaup = [];
+
+        // TODO 1: Skrifaðu function teiknaLista() sem:
+        // - notar for...of á innkaup til að búa til "<li>vara</li>" fyrir hverja vöru
+        // - setur það inn í innkaupalisti
+        // - uppfærir fjoldiVara með innkaup.length
+        function teiknaLista() {
+          let html = "";
+
+          for (const vara of innkaup) {
+            html += "<li>" + vara + "</li>";
+          }
+
+          document.getElementById("innkaupalisti").innerHTML = html;
+          document.getElementById("fjoldiVara").innerHTML =
+            "Fjöldi vara: " + innkaup.length;
+        }
+
+        // TODO 2: Skrifaðu function baetaVid() sem:
+        // - sækir vöruna úr varaInput
+        // - bætir henni í fylkið: innkaup.push(vara)
+        // - tæmir input-ið: document.getElementById("varaInput").value = ""
+        // - kallar á teiknaLista()
+        function baetaVid() {
+          let vara = document.getElementById("varaInput").value;
+
+          if (vara === "") {
+            return; // ekki bæta við tómri vöru
+          }
+
+          innkaup.push(vara);
+          document.getElementById("varaInput").value = "";
+          teiknaLista();
+        }
+
+        // SPURNING (svaraðu í athugasemd hér fyrir neðan):
+        // Af hverju er innkaup búið til fyrir utan functions?
+        // Hvað myndi gerast ef það væri búið til inni í baetaVid()?
+        // SVAR: innkaup þarf að lifa á milli smella og báðar functions þurfa að
+        // sjá það, svo það verður að vera global. Ef það væri búið til inni í
+        // baetaVid() væri nýtt tómt fylki búið til í hvert skipti, listinn yrði
+        // alltaf bara ein vara og teiknaLista() gæti ekki séð það (ReferenceError).
+      </script>
+    </section>
+
+    <!-- Verkefni 6 -->
+    <section>
+      <h2>Verkefni 6: Teljari</h2>
+      <p>Gerðu teljara með þremur tökkum: +1, −1 og Núllstilla.</p>
+      <button onclick="haekka()">+1</button>
+      <button onclick="laekka()">−1</button>
+      <button onclick="nullstilla()">Núllstilla</button>
+      <p class="output" id="verkefni6">0</p>
+
+      <script>
+        // TODO:
+        // 1. Búðu til breytu fyrir teljarann. Hugsaðu: hvar á hún að vera?
+        // 2. Skrifaðu function uppfaera() sem skrifar teljarann í verkefni6
+        // 3. Skrifaðu functions haekka(), laekka() og nullstilla()
+        //    sem breyta teljaranum og kalla svo á uppfaera()
+        // Bónus: ef teljarinn fer undir 0, láttu textann verða rauðan
+        //        (document.getElementById("verkefni6").style.color = "red")
+        let teljari = 0; // global: þarf að lifa á milli smella
+
+        function uppfaera() {
+          let output = document.getElementById("verkefni6");
+          output.innerHTML = teljari;
+
+          if (teljari < 0) {
+            output.style.color = "red";
+          } else {
+            output.style.color = "black";
+          }
+        }
+
+        function haekka() {
+          teljari++;
+          uppfaera();
+        }
+
+        function laekka() {
+          teljari--;
+          uppfaera();
+        }
+
+        function nullstilla() {
+          teljari = 0;
+          uppfaera();
+        }
+      </script>
+    </section>
+
+    <!-- Verkefni 7 -->
+    <section>
+      <h2>Verkefni 7: Aukaáskorun 🌟 FizzBuzz</h2>
+      <p>Skrifaðu tölurnar 1 til 100, nema:</p>
+      <ul>
+        <li>ef talan deilist með 3: skrifaðu <b>Fizz</b></li>
+        <li>ef talan deilist með 5: skrifaðu <b>Buzz</b></li>
+        <li>ef talan deilist með bæði 3 og 5: skrifaðu <b>FizzBuzz</b></li>
+      </ul>
+      <p>
+        Vísbending: <code>%</code> gefur afganginn af deilingu.
+        <code>9 % 3</code> er 0 (deilist), <code>10 % 3</code> er 1 (deilist
+        ekki).
+      </p>
+      <button onclick="fizzBuzz()">Keyra FizzBuzz</button>
+      <p class="output" id="verkefni7"></p>
+
+      <script>
+        // TODO: Skrifaðu function fizzBuzz()
+        // Passaðu röðina á if-unum: hvaða skilyrði þarf að athuga fyrst?
+        function fizzBuzz() {
+          let texti = "";
+
+          for (let i = 1; i <= 100; i++) {
+            if (i % 3 === 0 && i % 5 === 0) {
+              texti += "FizzBuzz<br>";
+            } else if (i % 3 === 0) {
+              texti += "Fizz<br>";
+            } else if (i % 5 === 0) {
+              texti += "Buzz<br>";
+            } else {
+              texti += i + "<br>";
+            }
+          }
+
+          document.getElementById("verkefni7").innerHTML = texti;
+        }
+      </script>
+    </section>
+  </body>
+</html>
